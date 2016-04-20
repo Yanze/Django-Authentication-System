@@ -1,0 +1,12 @@
+{% extends "views/base.html" %}
+
+{% block title %}Base Template{% endblock %}
+
+{% block content %}
+  <h1>Login Here</h1>
+  <form action="{% url 'accounts-login' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+  </form>
+
+{% endblock %}

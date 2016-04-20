@@ -1,0 +1,14 @@
+{% extends "views/base.html" %}
+
+{% block title %}Base Template{% endblock %}
+
+{% block content %}
+  <h1>Base Tempalte</h1>
+  <p>This is a sample base template</p>
+
+  <form action="{% url 'add' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
