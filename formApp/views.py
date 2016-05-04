@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 # from formApp.forms import ContactForm
 from django.views.generic import View
-from django.contrib.auth import forms
+from django.contrib.auth import forms, login, authenticate
 
 # Create your views here.
 # def contact_form(request):
@@ -32,5 +32,11 @@ class Register(View):
             form.save()
             return redirect('show')
         else:
-            context = {'form': form}
-            return render(request, 'views/register.html', context)
+            # context = {'form': form}
+            return redirect('accounts-register')
+
+class Login(View):
+    form = forms.AuthenticationForm
+    def get(self, request):
+        context = {'form': form}
+        return render(request, 'accounts/login.html', context)
